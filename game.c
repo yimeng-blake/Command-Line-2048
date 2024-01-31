@@ -27,20 +27,8 @@ typedef struct{
     int cols;
 }Dimensions;
 
-//Initialize the 4x4 Blocks grid on the head, with the values and filled initialized to 0
-Blocks** init_grid(int rows, int cols){
-    Blocks **grid = malloc(sizeof(Blocks *) * rows);
-    for (int i = 0; i < rows; i++){
-        grid[i] = malloc(sizeof(Blocks *)*cols);
-        for (int j = 0; j < cols; j++){
-            grid[i][j].value = 0;
-            grid[i][j].filled = 0;
-        }
-    }
-    return grid;
-}
-
 //Function Prototypes
+Blocks** init_grid(int rows, int cols);
 void display_grid(Blocks **grid);
 void display_header(int rounds, int score, Blocks **grid);
 int has_valid_moves(Blocks **grid);
@@ -77,6 +65,18 @@ int main() {
     }
 }
 
+//Initialize the 4x4 Blocks grid on the head, with the values and filled initialized to 0
+Blocks** init_grid(int rows, int cols){
+    Blocks **grid = malloc(sizeof(Blocks *) * rows);
+    for (int i = 0; i < rows; i++){
+        grid[i] = malloc(sizeof(Blocks *)*cols);
+        for (int j = 0; j < cols; j++){
+            grid[i][j].value = 0;
+            grid[i][j].filled = 0;
+        }
+    }
+    return grid;
+}
 
 //Displays the current state of the grid for player observation
 //for numbers with different digits, the display is updated to make sure the grid looks good
